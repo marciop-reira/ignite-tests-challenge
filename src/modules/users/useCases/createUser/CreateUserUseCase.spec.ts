@@ -1,23 +1,21 @@
 import { compare } from "bcryptjs";
+
+import { createRandomUser } from "../../../../shared/factories/user-factory";
 import { InMemoryUsersRepository } from "../../repositories/in-memory/InMemoryUsersRepository";
-import { CreateUserUseCase } from "./CreateUserUseCase";
 import { CreateUserError } from "./CreateUserError";
+import { CreateUserUseCase } from "./CreateUserUseCase";
 
 let usersRepository: InMemoryUsersRepository;
 let createUserUseCase: CreateUserUseCase;
 
-const user = {
-  name: "Test",
-  email: "test@example.com",
-  password: "123"
-};
+const user = createRandomUser();
 
 describe("Create User", () => {
   beforeAll(() => {
     usersRepository = new InMemoryUsersRepository();
     createUserUseCase = new CreateUserUseCase(usersRepository);
   });
-  
+
   it("should be able to create a user", async () => {
     await createUserUseCase.execute(user);
     const { password, ...userWithoutPassword } = user;
@@ -31,6 +29,8 @@ describe("Create User", () => {
   });
 
   it("should not be able to create an existing user", async () => {
-    await expect(createUserUseCase.execute(user)).rejects.toBeInstanceOf(CreateUserError);
+    await expect(createUserUseCase.execute(user)).rejects.toBeInstanceOf(
+      CreateUserError
+    );
   });
 });

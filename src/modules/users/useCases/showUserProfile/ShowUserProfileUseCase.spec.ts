@@ -1,3 +1,4 @@
+import { createRandomUser } from "../../../../shared/factories/user-factory";
 import { InMemoryUsersRepository } from "../../repositories/in-memory/InMemoryUsersRepository";
 import { ShowUserProfileError } from "./ShowUserProfileError";
 import { ShowUserProfileUseCase } from "./ShowUserProfileUseCase";
@@ -5,11 +6,7 @@ import { ShowUserProfileUseCase } from "./ShowUserProfileUseCase";
 let usersRepository: InMemoryUsersRepository;
 let showUserProfileUseCase: ShowUserProfileUseCase;
 
-const user = {
-  name: "Test",
-  email: "test@example.com",
-  password: "123"
-};
+const user = createRandomUser();
 
 describe("Show User Profile", () => {
   beforeAll(() => {

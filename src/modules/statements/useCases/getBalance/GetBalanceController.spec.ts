@@ -16,7 +16,7 @@ const withdrawOperation = createRandomStatementOperation(
   depositOperation.amount - 1.15
 );
 
-describe("Get Balance Controller", () => {
+describe("Get Balance Controller [GET /api/v1/statements/balance]", () => {
   beforeAll(async () => {
     connection = await createConnection();
     await connection.runMigrations();

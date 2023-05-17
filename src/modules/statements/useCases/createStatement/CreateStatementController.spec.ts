@@ -12,7 +12,7 @@ let token: string;
 const user = createRandomUser();
 const operation = createRandomStatementOperation(OperationType.DEPOSIT);
 
-describe("Create Statement Controller", () => {
+describe("Create Statement Controller [POST /api/v1/statements/deposit|withdraw]", () => {
   beforeAll(async () => {
     connection = await createConnection();
     await connection.runMigrations();

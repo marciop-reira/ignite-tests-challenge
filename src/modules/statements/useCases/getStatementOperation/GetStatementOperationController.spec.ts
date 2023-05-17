@@ -15,7 +15,7 @@ let createdStatement: Statement;
 const user = createRandomUser();
 const depositOperation = createRandomStatementOperation(OperationType.DEPOSIT);
 
-describe("Get Balance Controller", () => {
+describe("Get Balance Controller [GET /api/v1/statements/:statement_id]", () => {
   beforeAll(async () => {
     connection = await createConnection();
     await connection.runMigrations();

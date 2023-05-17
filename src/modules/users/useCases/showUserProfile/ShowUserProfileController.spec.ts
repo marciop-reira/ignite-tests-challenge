@@ -8,7 +8,7 @@ let connection: Connection;
 
 const user = createRandomUser();
 
-describe("Show User Profile Controller", () => {
+describe("Show User Profile Controller [GET /api/v1/profile]", () => {
   beforeAll(async () => {
     connection = await createConnection();
     await connection.runMigrations();
